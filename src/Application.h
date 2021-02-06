@@ -20,6 +20,7 @@ public:
 	void setModeVR(bool haveVR) noexcept;
 
     void RunLoop();
+	void AsyncRenderThread(vn::Framebuffer& fbo);
 
     //State Stuff
 

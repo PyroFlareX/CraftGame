@@ -2,6 +2,7 @@
 
 #include "States/Gamestate.h"
 
+#include <thread>
 
 Application::Application() : m_camera(0)
 {
@@ -40,6 +41,11 @@ void Application::RunLoop()
 
 	//Main Loop
 	Input::window = m_context.getContext();
+
+	m_context.getContext()->setActive(false);
+	
+	std::thread renderingThread(&Application::AsyncRenderThread, this, std::ref(primary));
+
     while(m_context.isOpen() && !m_states.empty())
     {
 		dt = clock.restart();
@@ -56,20 +62,9 @@ void Application::RunLoop()
 		currentState().render(&m_renderer);
 
         /// Render
+		// Async Test
+		//AsyncRenderThread(primary);
 		
-		primary.bind();
-		m_renderer.render(m_camera);
-	
-
-		primary.getTexture().bind();
-		glViewport(0, 0, 1280, 720);
-
-		m_renderer.finish();
-
-        m_context.update();
-
-		glFlush();
-		glFinish();
 
         /// Handle Window Events
 		t += dt;
@@ -83,6 +78,29 @@ void Application::RunLoop()
 		handleEvents();
     }
 	m_context.close();
+
+	renderingThread.join();
+}
+
+void Application::AsyncRenderThread(vn::Framebuffer& fbo)
+{
+	m_context.getContext()->setActive(true);
+	while (m_context.isOpen())
+	{
+		fbo.bind();
+		m_renderer.render(m_camera);
+
+
+		fbo.getTexture().bind();
+		glViewport(0, 0, 1280, 720);
+
+		m_renderer.finish();
+
+		m_context.update();
+
+		glFlush();
+		glFinish();
+	}
 }
 
 void Application::popState()
