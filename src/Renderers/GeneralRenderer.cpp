@@ -19,11 +19,6 @@ GeneralRenderer::GeneralRenderer()
 	m_textures.emplace_back(std::make_unique<vn::Texture>("res/container.jpg"));
 	m_textures.emplace_back(std::make_unique<vn::Texture>("res/container1.jpg"));
 
-	//m_generalModel.addData(vn::loadMeshFromObj("res/Models/Sword.obj"));
-	//m_generalModel.addData(vn::loadMeshFromObj("res/Models/mythra.obj"));
-	//m_generalModel.addData(vn::loadMeshFromObj("res/Models/teapot.obj"));
-	//m_generalModel.addData(vn::loadMeshFromObj("res/Models/chalet.obj"));
-
 	m_lampModel.addData(vn::loadMeshFromObj("res/Models/cube.obj"));
 }
 

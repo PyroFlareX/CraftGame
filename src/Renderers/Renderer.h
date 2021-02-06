@@ -5,6 +5,7 @@
 #include "CubeRenderer.h"
 #include "GeneralRenderer.h"
 #include "ComputeRenderer.h"
+#include "GUIRenderer.h"
 #include "../../Engine/Engine.h"
 
 
@@ -15,6 +16,7 @@ class Renderer
 
 		void drawCube(vn::Transform& entity);
 		void drawObject(vn::GameObject& entity);
+		//void drawGUI();
 		void doCompute();
 		void render(Camera& cam);
 		void finish();
