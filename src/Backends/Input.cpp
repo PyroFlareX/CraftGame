@@ -52,9 +52,9 @@ namespace Input
 		if (!enableCursor)
 		{
 			sf::Vector2i mouse = sf::Mouse::getPosition(*window);
-			sf::Mouse::setPosition(sf::Vector2i(0, 0),*window);
-			input.RY += mouse.y;
-			input.RX += mouse.x;
+			sf::Mouse::setPosition(sf::Vector2i(100, 100),*window);
+			input.RY += mouse.y - 100;
+			input.RX += mouse.x - 100;
 		}
 		return input;
 	}
