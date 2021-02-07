@@ -49,6 +49,12 @@ namespace Input
 			input.accel = true;
 		}
 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+		{
+			sf::Vector2u size = window->getSize();
+			glViewport(0, 0, size.x, size.y);
+		}
+
 		if (!enableCursor)
 		{
 			sf::Vector2i mouse = sf::Mouse::getPosition(*window);

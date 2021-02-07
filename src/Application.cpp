@@ -93,7 +93,7 @@ void Application::AsyncRenderThread(vn::Framebuffer& fbo)
 
 
 		fbo.getTexture().bind();
-		glViewport(0, 0, 1280, 720);
+		//glViewport(0, 0, 1280, 720);
 
 		m_renderer.finish();
 
