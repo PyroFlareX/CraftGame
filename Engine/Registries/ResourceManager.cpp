@@ -16,14 +16,14 @@ TextureManager::TextureManager()
 	sf::Image img;
 	img.loadFromFile("res/Textures/dirt.png");
 	addImg(img, "dirt");
-	/*img.loadFromFile("res/Textures/grass_side.png");
+	img.loadFromFile("res/Textures/grass_side.png");
 	addImg(img, "grass_side");
 	img.loadFromFile("res/Textures/grass_top.png");
 	addImg(img, "grass_top");
 	img.loadFromFile("res/Textures/sand.png");
 	addImg(img, "sand");
 	img.loadFromFile("res/Textures/stone.png");
-	addImg(img, "stone");*/
+	addImg(img, "stone");
 }
 
 void TextureManager::addImg(sf::Image img, const std::string& texName)

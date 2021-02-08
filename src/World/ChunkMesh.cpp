@@ -18,7 +18,7 @@ void ChunkMesh::addFace(const std::array<GLfloat, 12>& blockFace, const std::arr
 			blockPos.y, blockFace[index++] + chunkPos.z * 16 +
 			blockPos.z);
 		//v.normal = vn::vec3(0.0f, 0.0f, 0.0f);
-		v.uv = vn::vec2(texCoords[texIndex++], texCoords[texIndex]);
+		v.uv = vn::vec2(texCoords[texIndex++], texCoords[texIndex++]);
 		
 		m_mesh.vertices.push_back(v);
 	}

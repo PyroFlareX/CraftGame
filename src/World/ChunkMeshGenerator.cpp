@@ -81,15 +81,15 @@ void ChunkMeshGenerator::makeMesh()
 			tryAddFaceToMesh(bottomFace, "dirt", position,
 				directions.down);
 		}
-		tryAddFaceToMesh(topFace, "dirt", position, directions.up);
+		tryAddFaceToMesh(topFace, "grass_top", position, directions.up);
 
 		// Left/ Right
-		tryAddFaceToMesh(leftFace, "dirt", position, directions.left);
-		tryAddFaceToMesh(rightFace, "dirt", position, directions.right);
+		tryAddFaceToMesh(leftFace, "grass_side", position, directions.left);
+		tryAddFaceToMesh(rightFace, "grass_side", position, directions.right);
 
 		// Front/ Back
-		tryAddFaceToMesh(frontFace, "dirt", position, directions.front);
-		tryAddFaceToMesh(backFace, "dirt", position, directions.back);
+		tryAddFaceToMesh(frontFace, "grass_side", position, directions.front);
+		tryAddFaceToMesh(backFace, "grass_side", position, directions.back);
 	}
 	std::cout << "Mesh Made" << std::endl;
 }
@@ -101,6 +101,7 @@ void ChunkMeshGenerator::tryAddFaceToMesh(const std::array<GLfloat, 12>& blockFa
 		faces++;
 		//texture stuff
 		auto texCoords = resources::TexManager.getTexCoords(texName);
+		std::cout << texName << " " << texCoords[0] << " " << texCoords[1] << " " << texCoords[2] << " " << texCoords[3] << " " << texCoords[4] << " " << texCoords[5] << " " << texCoords[6] << " " << texCoords[7] << std::endl;
 		m_pChunkMesh->addFace(blockFace, texCoords, m_pChunk->getPosition(), blockPosition);
 	}
 }

@@ -42,6 +42,8 @@ Chunk::Chunk(World* world, vn::vec3i pos)
 		}
 	}
 
+	m_blocks[convertPosition(vn::vec3i(5, 5, 5))] = Block();
+
 }
 
 void Chunk::makeMesh()
