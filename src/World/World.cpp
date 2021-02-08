@@ -35,11 +35,11 @@ void World::update(float dt)
 void World::renderWorld(Renderer& render)
 {
 	int rad = 5;
-	for (int x = 0; x < 16; ++x)
+	for (int x = 0; x < 1; ++x)
 	{
-		for (int y = 0; y < 16; ++y)
+		for (int y = 0; y < 1; ++y)
 		{
-			for (int z = 0; z < 16; ++z)
+			for (int z = 0; z < 1; ++z)
 			{
 				m_chunks[vn::vec3i(x, y, z)].renderChunk(render);
 			}
@@ -54,8 +54,15 @@ void World::setBlock(Block& block, vn::vec3i pos)
 
 Block& World::getBlock(vn::vec3i pos)
 {
+	if (pos.x > 255 || pos.x < 0 || pos.y > 255 || pos.y < 0 || pos.z > 255 || pos.z < 0)
+	{
+		Block b;
+		b.id = 0;
+		return b;
+	}
 	// TODO: insert return statement here
 	vn::vec3i blockcoord = vn::vec3i(pos.x % 16, pos.y % 16, pos.z % 16);
+	
 	return m_chunks.at(vn::vec3i(pos.x / 16, pos.y / 16, pos.z / 16)).getBlock(blockcoord);
 }
 

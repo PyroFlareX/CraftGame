@@ -81,17 +81,17 @@ void ChunkMeshGenerator::makeMesh()
 			tryAddFaceToMesh(bottomFace, "dirt", position,
 				directions.down);
 		}
-		tryAddFaceToMesh(topFace, "grass_top", position, directions.up);
+		tryAddFaceToMesh(topFace, "dirt", position, directions.up);
 
 		// Left/ Right
-		tryAddFaceToMesh(leftFace, "grass_side", position, directions.left);
-		tryAddFaceToMesh(rightFace, "grass_side", position, directions.right);
+		tryAddFaceToMesh(leftFace, "dirt", position, directions.left);
+		tryAddFaceToMesh(rightFace, "dirt", position, directions.right);
 
 		// Front/ Back
-		tryAddFaceToMesh(frontFace, "grass_side", position, directions.front);
-		tryAddFaceToMesh(backFace, "grass_side", position, directions.back);
+		tryAddFaceToMesh(frontFace, "dirt", position, directions.front);
+		tryAddFaceToMesh(backFace, "dirt", position, directions.back);
 	}
-
+	std::cout << "Mesh Made" << std::endl;
 }
 
 void ChunkMeshGenerator::tryAddFaceToMesh(const std::array<GLfloat, 12>& blockFace, const std::string& texName, const vn::vec3i& blockPosition, const vn::vec3i& blockFacing)

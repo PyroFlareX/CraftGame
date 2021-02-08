@@ -38,7 +38,7 @@ private:
 
 	std::array<Block, CHUNK_SIZE> m_blocks;
 
-	ChunkMesh* m_pMesh;
+	ChunkMesh m_Mesh;
 	World* m_pWorld;
 	vn::vec3i position;
 

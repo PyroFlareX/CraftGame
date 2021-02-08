@@ -102,6 +102,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>B:\ProgrammingProj\Library\glm;B:\ProgrammingProj\Library\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>B:\ProgrammingProj\Library\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>

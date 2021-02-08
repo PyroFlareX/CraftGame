@@ -23,7 +23,9 @@ void ChunkMeshRenderer::render(Camera& cam)
 
 	m_shader.setMat4("view", cam.getViewMatrix());
 	m_shader.setMat4("proj", cam.getProjMatrix());
+	int i = 0;
 
+	
 	for (auto& chunk : m_queue)
 	{
 		glBindVertexArray(chunk->VAO);

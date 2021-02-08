@@ -8,9 +8,9 @@ namespace vn
 {
 	struct Vertex
 	{
-		vn::vec3 position;
-		vn::vec3 normal;
-		vn::vec2 uv;
+		vn::vec3 position = vn::vec3(0.0f, 0.0f, 0.0f);
+		vn::vec3 normal = vn::vec3(0.0f, 0.0f, 0.0f);
+		vn::vec2 uv = vn::vec2(0.0f, 0.0f);
 	};
 
 	struct Mesh

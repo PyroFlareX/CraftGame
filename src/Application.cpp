@@ -64,8 +64,21 @@ void Application::RunLoop()
 
         /// Render
 		// Async Test
-		AsyncRenderThread(primary);
-		
+		//AsyncRenderThread(primary);
+		primary.bind();
+		m_renderer.render(m_camera);
+
+
+
+		primary.getTexture().bind();
+		//glViewport(0, 0, 1280, 720);
+
+		m_renderer.finish();
+
+		m_context.update();
+
+		glFlush();
+		glFinish();
 
         /// Handle Window Events
 		t += dt;
