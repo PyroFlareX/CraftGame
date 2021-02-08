@@ -16,19 +16,22 @@ TextureManager::TextureManager()
 	sf::Image img;
 	img.loadFromFile("res/Textures/dirt.png");
 	addImg(img, "dirt");
-	img.loadFromFile("res/Textures/grass_side.png");
-	addImg(img, "grass_side");
-	img.loadFromFile("res/Textures/grass_top.png");
-	addImg(img, "grass_top");
-	img.loadFromFile("res/Textures/sand.png");
-	addImg(img, "sand");
-	img.loadFromFile("res/Textures/stone.png");
-	addImg(img, "stone");
+	sf::Image grass_side;
+	grass_side.loadFromFile("res/Textures/grass_side.png");
+	addImg(grass_side, "grass_side");
+	sf::Image grass_top;
+	grass_top.loadFromFile("res/Textures/grass_top.png");
+	addImg(grass_top, "grass_top");
+	sf::Image sand;
+	sand.loadFromFile("res/Textures/sand.png");
+	addImg(sand, "sand");
+	sf::Image stone;
+	stone.loadFromFile("res/Textures/stone.png");
+	addImg(stone, "stone");
 }
 
 void TextureManager::addImg(sf::Image img, const std::string& texName)
 {
-	img.flipVertically();
 	imgs.push_back({ img, texName });
 }
 
