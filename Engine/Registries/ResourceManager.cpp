@@ -35,9 +35,9 @@ void TextureManager::addImg(sf::Image img, const std::string& texName)
 void TextureManager::buildTextureSheet()
 {
 	unsigned int x = 0, y = 0;
-	sheet.create(256, 16 * ((imgs.size() / 16) + 1));
+	sheet.create(256, 256/*16 * ((imgs.size() / 16) + 1)*/);
 
-	sf::Vector2f offsetXY = sf::Vector2f(0.0625f, sheet.getSize().y / 16.0f);
+	sf::Vector2f offsetXY = sf::Vector2f(0.0625f, 0.0625f);
 
 	for (auto& image : imgs)
 	{

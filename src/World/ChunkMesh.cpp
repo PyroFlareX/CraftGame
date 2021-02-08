@@ -24,9 +24,9 @@ void ChunkMesh::addFace(const std::array<GLfloat, 12>& blockFace, const std::arr
 	}
 
 	m_mesh.indicies.insert(m_mesh.indicies.end(),
-		{ m_index, m_index + 1, m_index + 2,
+		{ m_index + 2, m_index + 1, m_index,
 
-		 m_index + 2, m_index + 3, m_index });
+		 m_index, m_index + 3, m_index + 2 });
 	m_index += 4;
 }
 

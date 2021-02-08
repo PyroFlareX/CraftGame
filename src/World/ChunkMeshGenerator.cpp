@@ -29,10 +29,10 @@ struct AdjacentBlockPositions {
 	{
 		up = { x, y + 1, z };
 		down = { x, y - 1, z };
-		left = { x - 1, y, z };
-		right = { x + 1, y, z };
-		front = { x, y, z + 1 };
-		back = { x, y, z - 1 };
+		back = { x - 1, y, z };
+		front = { x + 1, y, z };
+		right = { x, y, z + 1 };
+		left = { x, y, z - 1 };
 	}
 
 	vn::vec3i up;
@@ -70,7 +70,7 @@ void ChunkMeshGenerator::makeMesh()
 
 		auto& block = m_pChunk->getBlock(position);
 
-		if (block.id = 0)
+		if (block.id == 0)
 			continue;
 
 		directions.update(x, y, z);
