@@ -1,8 +1,8 @@
 #include "ResourceManager.h"
-/*
+
 TextureManager::TextureManager()
 {
-	/*sf::Image filler;
+	sf::Image filler;
 	filler.create(16, 16, sf::Color::Green);
 	for (int x = 4; x <= 12; x++)
 	{
@@ -23,7 +23,7 @@ TextureManager::TextureManager()
 	img.loadFromFile("res/Textures/sand.png");
 	addImg(img, "sand");
 	img.loadFromFile("res/Textures/stone.png");
-	addImg(img, "stone");*//*
+	addImg(img, "stone");
 }
 
 void TextureManager::addImg(sf::Image img, const std::string& texName)
@@ -82,16 +82,16 @@ TextureManager::~TextureManager()
 }
 
 
-
-/*BlockManager::BlockManager()
+/*
+BlockManager::BlockManager()
 {
-	/*Block block(BlockId::DIRT, "dirt");
+	Block block(BlockId::DIRT, "dirt");
 	addBlock(block, "dirt");
 	Block block(BlockId::GRASS, "grass");
 	addBlock(block, "grass");
 	Block block(BlockId::STONE, "stone");
-	addBlock(block, "stone");*/
-/*}
+	addBlock(block, "stone");
+}
 
 void BlockManager::addBlock(Block& block, const std::string& blockName)
 {
@@ -106,11 +106,10 @@ Block& BlockManager::getBlock(const std::string& blockName)
 BlockManager::~BlockManager()
 {
 
-}
-*//*
+}*/
+
 namespace resources
 {
 	TextureManager TexManager;
 	//BlockManager BlockDatabase;
 }
-*/

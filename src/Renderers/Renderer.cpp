@@ -40,6 +40,11 @@ void Renderer::drawObject(vn::GameObject& entity)
 	m_generalRenderer.addInstance(entity);
 }
 
+void Renderer::drawChunk(ChunkMesh& mesh)
+{
+	m_chunkMeshRenderer.addInstance(mesh);
+}
+
 void Renderer::doCompute()
 {
 
@@ -53,6 +58,7 @@ void Renderer::render(Camera& cam)
 	glEnable(GL_DEPTH_TEST);
 	m_cubeRenderer.render(cam);
 	m_generalRenderer.render(cam);
+	m_chunkMeshRenderer.render(cam);
 	m_computeRenderer.render();
 }
 

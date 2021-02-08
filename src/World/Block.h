@@ -4,5 +4,5 @@
 
 struct Block 
 {
-	unsigned char id = 0;
+	unsigned char id = 1;
 };

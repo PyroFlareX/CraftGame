@@ -24,3 +24,34 @@ namespace vn
 		std::unordered_map<int, T> m_registry;
 	};
 }
+
+#include <SFML/Graphics.hpp>
+#include "../Util/Loaders.h"
+
+class TextureManager
+{
+public:
+	TextureManager();
+
+	void addImg(sf::Image img, const std::string& texName);
+
+	sf::Image& getSheet();
+	std::array<float, 8> getTexCoords(const std::string& texName);
+
+	~TextureManager();
+private:
+	void buildTextureSheet();
+
+	std::unordered_map<std::string, std::array<float, 8>> m_blockTexCoordsMap;
+	std::vector<std::pair<sf::Image, std::string>> imgs;
+	sf::Image sheet;
+};
+
+#ifndef _res
+#define _res
+namespace resources
+{
+	extern TextureManager TexManager;
+	//extern BlockManager BlockDatabase;
+}
+#endif

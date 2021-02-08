@@ -87,4 +87,18 @@ namespace std
 			return std::hash<decltype(vect.x)>{}((hash1 ^ (hash2 << hash3) ^ hash3));
 		}
 	};
+	template<>
+	struct hash<vn::vec2i>
+	{
+		size_t operator()(const vn::vec3& vect) const noexcept
+		{
+			std::hash<decltype(vect.x)> hasher;
+
+			auto hash1 = hasher(vect.x);
+			auto hash2 = hasher(vect.y);
+			auto hash3 = hasher(vect.z);
+
+			return std::hash<decltype(vect.x)>{}((hash1 ^ (hash2 << hash3) ^ hash3));
+		}
+	};
 }

@@ -5,6 +5,7 @@
 GameState::GameState(Application& app)	:	Basestate(app)
 {
 	app.getCam().follow(m_player);
+	m_world.setPlayerCam(&app.getCam());
 	vn::Transform t;
 	vn::GameObject gobj(t);
 
@@ -45,6 +46,7 @@ void GameState::lateUpdate(Camera* cam)
 
 void GameState::render(Renderer* renderer)
 {		
+	m_world.renderWorld(*renderer);
 	for (auto& obj : m_gameObjects)
 	{
 		obj.getCurrentTransform();

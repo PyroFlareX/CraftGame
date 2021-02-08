@@ -1,16 +1,25 @@
 #pragma once
 
 #include "../Model.h"
-#include "Chunk.h"
 
-class World;
+#include "Chunk.h"
+#include "ChunkMesh.h"
+
+#include "../../Engine/Registries/ResourceManager.h"
 
 class ChunkMeshGenerator
 {
 public:
-	ChunkMeshGenerator(World* world);
+	ChunkMeshGenerator(Chunk& chunk, ChunkMesh& mesh);
 
-	void makeMesh(Chunk* chunk);
+	void makeMesh();
 private:
-	World* m_world;
+
+	void tryAddFaceToMesh(	const std::array<GLfloat, 12>& blockFace, const std::string& texName,
+							const vn::vec3i& blockPosition, const vn::vec3i& blockFacing);
+	bool shouldMakeFace(const vn::vec3i& adjPos);
+
+
+	Chunk* m_pChunk = nullptr;
+	ChunkMesh* m_pChunkMesh = nullptr;
 };

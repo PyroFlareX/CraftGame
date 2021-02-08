@@ -43,9 +43,9 @@ void Application::RunLoop()
 	//Main Loop
 	Input::window = m_context.getContext();
 
-	m_context.getContext()->setActive(false);
+	//m_context.getContext()->setActive(false);
 	
-	std::thread renderingThread(&Application::AsyncRenderThread, this, std::ref(primary));
+	//std::thread renderingThread(&Application::AsyncRenderThread, this, std::ref(primary));
 
     while(m_context.isOpen() && !m_states.empty())
     {
@@ -64,7 +64,7 @@ void Application::RunLoop()
 
         /// Render
 		// Async Test
-		//AsyncRenderThread(primary);
+		AsyncRenderThread(primary);
 		
 
         /// Handle Window Events
@@ -80,17 +80,18 @@ void Application::RunLoop()
     }
 	m_context.close();
 
-	renderingThread.join();
+	//renderingThread.join();
 }
 
 void Application::AsyncRenderThread(vn::Framebuffer& fbo)
 {
-	m_context.getContext()->setActive(true);
+	//m_context.getContext()->setActive(true);
 	while (m_context.isOpen())
 	{
 		fbo.bind();
 		m_renderer.render(m_camera);
 
+		
 
 		fbo.getTexture().bind();
 		//glViewport(0, 0, 1280, 720);
