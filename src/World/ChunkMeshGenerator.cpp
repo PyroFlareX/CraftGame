@@ -101,7 +101,7 @@ void ChunkMeshGenerator::tryAddFaceToMesh(const std::array<GLfloat, 12>& blockFa
 		faces++;
 		//texture stuff
 		auto texCoords = resources::TexManager.getTexCoords(texName);
-		std::cout << texName << " " << texCoords[0] << " " << texCoords[1] << " " << texCoords[2] << " " << texCoords[3] << " " << texCoords[4] << " " << texCoords[5] << " " << texCoords[6] << " " << texCoords[7] << std::endl;
+		//std::cout << texName << " " << texCoords[0] << " " << texCoords[1] << " " << texCoords[2] << " " << texCoords[3] << " " << texCoords[4] << " " << texCoords[5] << " " << texCoords[6] << " " << texCoords[7] << std::endl;
 		m_pChunkMesh->addFace(blockFace, texCoords, m_pChunk->getPosition(), blockPosition);
 	}
 }

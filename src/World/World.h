@@ -5,7 +5,7 @@
 #include "Chunk.h"
 #include "ChunkMeshGenerator.h"
 
-#include <unordered_map>
+#include "ChunkManager.h"
 
 class Camera;
 
@@ -28,7 +28,9 @@ public:
 
 	~World();
 private:
-	std::unordered_map<vn::vec3i, Chunk> m_chunks;
+	ChunkManager m_chunkManager;
+
+	std::vector<Chunk*> m_renderlist;
 
 	Camera* playerCamera;
 };

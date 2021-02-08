@@ -1,19 +1,9 @@
 #include "World.h"
 
-World::World() 
+World::World()  : m_chunkManager(this)
 {
 	
-	for (int x = 0; x < 16; ++x)
-	{
-		for (int y = 0; y < 16; ++y)
-		{
-			for (int z = 0; z < 16; ++z)
-			{
-				Chunk c(this, vn::vec3i(x, y, z));
-				m_chunks[vn::vec3i(x, y, z)] = c;
-			}
-		}
-	}
+	
 	
 }
 
@@ -35,16 +25,13 @@ void World::update(float dt)
 void World::renderWorld(Renderer& render)
 {
 	int rad = 5;
-	for (int x = 0; x < 2; ++x)
+	
+	m_chunkManager.getRenderChunks(*playerCamera, m_renderlist);
+	for (auto& chunk : m_renderlist)
 	{
-		for (int y = 0; y < 2; ++y)
-		{
-			for (int z = 0; z < 2; ++z)
-			{
-				m_chunks[vn::vec3i(x, y, z)].renderChunk(render);
-			}
-		}
+		chunk->renderChunk(render);
 	}
+	m_renderlist.clear();
 }
 
 void World::setBlock(Block& block, vn::vec3i pos)
@@ -58,10 +45,10 @@ Block& World::getBlock(vn::vec3i pos)
 	{
 		return Block();
 	}
-	// TODO: insert return statement here
+
 	vn::vec3i blockcoord = vn::vec3i(pos.x % 16, pos.y % 16, pos.z % 16);
 	
-	return m_chunks.at(vn::vec3i(pos.x / 16, pos.y / 16, pos.z / 16)).getBlock(blockcoord);
+	return m_chunkManager.getChunk(vn::vec3i(pos.x / 16, pos.y / 16, pos.z / 16)).getBlock(blockcoord);
 }
 
 World::~World()

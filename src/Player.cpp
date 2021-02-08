@@ -3,7 +3,7 @@
 
 Player::Player()
 {
-	pos = vn::vec3(0.0f, 0.0f, 1.0f);
+	pos = vn::vec3(50.0f, 50.0f, 50.0f);
 	rot = vn::vec3(0.0f, 0.0f, 0.0f);
 	velocity = vn::vec3(0.0f, 0.0f, 0.0f);
 }
@@ -24,7 +24,7 @@ void Player::getInput(Input::Inputs vInput, bool VRmode)
 		}
 		if (vInput.down)
 		{
-			velocity.y--;
+			velocity.y-= 5;
 		}
 
 		//Backwards

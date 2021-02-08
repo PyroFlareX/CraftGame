@@ -8,7 +8,7 @@ Camera::Camera(int Mode)	:	mode(Mode)
 		proj = vn::makeProjectionMatrix(80.0f, vn::vec2(1280, 720));
 	}
 
-	pos = vn::vec3(0.0f, 0.0f, 3.0f);
+	pos = vn::vec3(0.0f, 0.0f, 1.0f);
 	rot = vn::vec3(0.0f);
 }
 
