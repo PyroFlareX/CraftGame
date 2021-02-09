@@ -41,12 +41,12 @@ void World::setBlock(Block& block, vn::vec3i pos)
 
 Block& World::getBlock(vn::vec3i pos)
 {
-	if (pos.x > 255 || pos.x < 0 || pos.y > 255 || pos.y < 0 || pos.z > 255 || pos.z < 0)
+	if (/*pos.x > 255 || pos.x < 0 ||*/ pos.y > 255 || pos.y < 0 /*|| pos.z > 255 || pos.z < 0*/)
 	{
 		return Block();
 	}
 
-	vn::vec3i blockcoord = vn::vec3i(pos.x % 16, pos.y % 16, pos.z % 16);
+	vn::vec3i blockcoord = vn::vec3i(abs(pos.x % 16), abs(pos.y % 16), abs(pos.z % 16));
 	
 	return m_chunkManager.getChunk(vn::vec3i(pos.x / 16, pos.y / 16, pos.z / 16)).getBlock(blockcoord);
 }

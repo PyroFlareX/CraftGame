@@ -76,7 +76,7 @@ namespace std
 	template<>
 	struct hash<vn::vec3i>
 	{
-		size_t operator()(const vn::vec3& vect) const noexcept
+		size_t operator()(const vn::vec3i& vect) const noexcept
 		{
 			std::hash<decltype(vect.x)> hasher;
 

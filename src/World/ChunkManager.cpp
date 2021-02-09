@@ -16,15 +16,18 @@ void ChunkManager::loadChunk(vn::vec3i pos)
 	Block dirt;
 	dirt.id = 1;
 
-	for (int x = pos.x * 16; x < pos.x * 16 + 16; ++x)
+
+	//Done like this instead of scaled per chunk for a) a workaround due to a modulo bug
+	// and b) for a possible performance improvement?
+	for (int x = 0; x <  16; ++x)
 	{
-		for (int z = pos.z * 16; z < pos.z * 16 + 16; ++z)
+		for (int z = 0; z < 16; ++z)
 		{
-			unsigned int height = noiseHeight(x, z);
-			for (int y = pos.y * 16; y < pos.y * 16 + 16; ++y)
+			unsigned int height = noiseHeight(x + pos.x * 16, z + pos.z * 16);
+			for (int y = 0; y < 16; ++y)
 			{
-				vn::vec3i blockcoords(x % 16, y % 16, z % 16);
-				if (height < (y))
+				vn::vec3i blockcoords(x, y, z);
+				if (height < (y + (pos.y * 16)))
 				{
 					c.setBlock(blockcoords, air);
 				}
