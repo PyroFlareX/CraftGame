@@ -25,5 +25,5 @@ private:
 
 	bool chunkExists(vn::vec3i position);
 
-	unsigned int noiseHeight(unsigned int x, unsigned int z);
+	unsigned int noiseHeight(int x, int z);
 };

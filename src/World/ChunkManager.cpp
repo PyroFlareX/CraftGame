@@ -66,7 +66,7 @@ Chunk& ChunkManager::getChunk(vn::vec3i position)
 
 void ChunkManager::getRenderChunks(Camera& cam, std::vector<Chunk*>& renderChunks)
 {
-	int radius = 3;
+	int radius = 6;
 	for (int x = (cam.pos.x / 16) - radius; x < (cam.pos.x / 16) + radius; ++x)
 	{
 		for (int z = (cam.pos.z / 16) - radius; z < (cam.pos.z / 16) + radius; ++z)
@@ -91,13 +91,13 @@ bool ChunkManager::chunkExists(vn::vec3i position)
 	return (m_chunks.find(position) != m_chunks.end());
 }
 
-unsigned int ChunkManager::noiseHeight(unsigned int x, unsigned int z)
+unsigned int ChunkManager::noiseHeight(int x, int z)
 {
 	float height = glm::simplex(glm::vec2(x / 16.0f, z / 16.0f));
 
-	height = (height + 1.0f) / 2.0f;
+	height = (height + 1.1f) / 2.1f;
 
-	height *= 6;
+	height *= 8;
 
 	return height;
 }

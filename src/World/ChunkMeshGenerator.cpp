@@ -73,9 +73,6 @@ void ChunkMeshGenerator::makeMesh()
 		if (block.id == 0)
 			continue;
 
-		// @TODO Add a method to return string based on side and block id
-
-
 		directions.update(x, y, z);
 
 		// Up/ Down

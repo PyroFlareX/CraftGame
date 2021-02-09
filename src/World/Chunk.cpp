@@ -9,24 +9,6 @@ Chunk::Chunk(World* world, vn::vec3i pos)
 	std::cout << "Chunk Constructor" << std::endl;
 	m_pWorld = world;
 	position = pos;
-	Block b;
-	b.id = 1;
-	/*for (int x = 0; x < 16; ++x)
-	{
-		for (int y = 0; y < 16; ++y)
-		{
-			for (int z = 0; z < 16; ++z)
-			{
-				if (outOfBounds(position.x) || outOfBounds(position.y) || outOfBounds(position.z))
-				{
-					m_blocks[convertPosition(vn::vec3i(x, y, z))] = Block();
-				}
-				m_blocks[convertPosition(vn::vec3i(x, y, z))] = b;
-			}
-		}
-	}*/
-
-	//m_blocks[convertPosition(vn::vec3i(5, 5, 5))] = Block();
 
 }
 
