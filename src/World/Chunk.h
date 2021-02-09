@@ -23,6 +23,7 @@ public:
 	Chunk(World* world, vn::vec3i pos);
 
 	void makeMesh();
+	bool tryBuffer();
 
 	Block& getBlock(const vn::vec3i& pos);
 	void setBlock(vn::vec3i& pos, Block& block);

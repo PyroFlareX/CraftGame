@@ -73,23 +73,26 @@ void ChunkMeshGenerator::makeMesh()
 		if (block.id == 0)
 			continue;
 
+		// @TODO Add a method to return string based on side and block id
+
+
 		directions.update(x, y, z);
 
 		// Up/ Down
 		if ((m_pChunk->getPosition().y != 0) || y != 0)
 		{
-			tryAddFaceToMesh(bottomFace, "dirt", position,
+			tryAddFaceToMesh(bottomFace, IBlock::getTextureSideBlock(block, directionType::bottom), position,
 				directions.down);
 		}
-		tryAddFaceToMesh(topFace, "grass_top", position, directions.up);
+		tryAddFaceToMesh(topFace, IBlock::getTextureSideBlock(block, directionType::top), position, directions.up);
 
 		// Left/ Right
-		tryAddFaceToMesh(leftFace, "grass_side", position, directions.left);
-		tryAddFaceToMesh(rightFace, "grass_side", position, directions.right);
+		tryAddFaceToMesh(leftFace, IBlock::getTextureSideBlock(block, directionType::left), position, directions.left);
+		tryAddFaceToMesh(rightFace, IBlock::getTextureSideBlock(block, directionType::right), position, directions.right);
 
 		// Front/ Back
-		tryAddFaceToMesh(frontFace, "grass_side", position, directions.front);
-		tryAddFaceToMesh(backFace, "grass_side", position, directions.back);
+		tryAddFaceToMesh(frontFace, IBlock::getTextureSideBlock(block, directionType::front), position, directions.front);
+		tryAddFaceToMesh(backFace, IBlock::getTextureSideBlock(block, directionType::back), position, directions.back);
 	}
 	std::cout << "Mesh Made" << std::endl;
 }

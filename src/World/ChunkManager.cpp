@@ -13,9 +13,14 @@ void ChunkManager::loadChunk(vn::vec3i pos)
 	Block air;
 	air.id = 0;
 
-	Block dirt;
-	dirt.id = 1;
+	Block grass;
+	grass.id = 1;
 
+	Block dirt;
+	dirt.id = 2;
+
+	Block stone;
+	stone.id = 4;
 
 	//Done like this instead of scaled per chunk for a) a workaround due to a modulo bug
 	// and b) for a possible performance improvement?
@@ -23,17 +28,23 @@ void ChunkManager::loadChunk(vn::vec3i pos)
 	{
 		for (int z = 0; z < 16; ++z)
 		{
+			// height : the y height of the surface layer at a given world (x,z) coordinate given by a simplex noise algorithm
 			unsigned int height = noiseHeight(x + pos.x * 16, z + pos.z * 16);
 			for (int y = 0; y < 16; ++y)
 			{
+				
 				vn::vec3i blockcoords(x, y, z);
 				if (height < (y + (pos.y * 16)))
 				{
 					c.setBlock(blockcoords, air);
 				}
-				else
+				else if(height > (y + (pos.y * 16)))
 				{
-					c.setBlock(blockcoords, dirt);
+					c.setBlock(blockcoords, stone);
+				}
+				else if (height == (y + (pos.y * 16)))
+				{
+					c.setBlock(blockcoords, grass);
 				}
 			}
 		}

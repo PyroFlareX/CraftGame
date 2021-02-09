@@ -38,6 +38,11 @@ void Chunk::makeMesh()
 	
 }
 
+bool Chunk::tryBuffer()
+{
+	return false;
+}
+
 Block& Chunk::getBlock(const vn::vec3i& pos)
 {
 	if (outOfBounds(pos.x) || outOfBounds(pos.y) || outOfBounds(pos.z))
