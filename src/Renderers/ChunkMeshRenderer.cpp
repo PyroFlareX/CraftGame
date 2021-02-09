@@ -6,7 +6,10 @@
 
 ChunkMeshRenderer::ChunkMeshRenderer()
 {
-	m_texture.loadFromImage(resources::TexManager.getSheet());
+	resources::TexManager.getSheet().saveToFile("res/Textures/BlockSheet.png");
+
+	m_tex.loadFromFile("res/Textures/BlockSheet.png");
+
 	m_shader.load("res/Shaders/ChunkVert.glsl", "res/Shaders/ChunkFrag.glsl");
 }
 
@@ -19,7 +22,7 @@ void ChunkMeshRenderer::render(Camera& cam)
 {
 	m_shader.use();
 
-	m_texture.bind(&m_texture);
+	m_tex.bind();
 
 	m_shader.setMat4("view", cam.getViewMatrix());
 	m_shader.setMat4("proj", cam.getProjMatrix());

@@ -3,6 +3,7 @@
 #include "Chunk.h"
 
 #include <unordered_map>
+#include <mutex>
 
 class World;
 
@@ -16,12 +17,14 @@ public:
 
 	Chunk& getChunk(vn::vec3i position);
 
-	void getRenderChunks(Camera& cam, std::vector<Chunk*>& renderChunks);
+	void getRenderChunks(const Camera& cam, std::vector<Chunk*>& renderChunks);
 
 	//~ChunkManager();
 private:
 	std::unordered_map<vn::vec3i, Chunk> m_chunks;
 	World* m_pWorld;
+
+	std::mutex m_accessLock;
 
 	bool chunkExists(vn::vec3i position);
 

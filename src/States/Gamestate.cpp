@@ -14,7 +14,7 @@ GameState::GameState(Application& app)	:	Basestate(app)
 
 GameState::~GameState()
 {
-
+	m_world.isRunning = false;
 }
 
 bool GameState::input()

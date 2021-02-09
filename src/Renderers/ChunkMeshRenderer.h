@@ -20,5 +20,5 @@ private:
 	std::vector<vn::renderInfo*> m_queue;
 
 	Shader m_shader;
-	sf::Texture m_texture;
+	vn::Texture m_tex;
 };

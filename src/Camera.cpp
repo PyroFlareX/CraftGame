@@ -14,23 +14,23 @@ Camera::Camera(int Mode)	:	mode(Mode)
 
 vn::mat4 Camera::getViewMatrix() const
 {
-	switch (mode)
+/*	switch (mode)
 	{
-	case 0:
+	case 0:*/
 		return vn::makeViewMatrix(*this);
-	case 1:
+/*	case 1:
 //		return vn::vr::viewMatrixL * vn::vr::HMDMatrix;
 	case 2:
 //		return vn::vr::viewMatrixR * vn::vr::HMDMatrix;
 	default:
 		break;
 	}
-	return vn::mat4();
+	return vn::mat4();*/
 }
 
 glm::mat4 Camera::getProjMatrix() const
 {
-	switch (mode)
+/*	switch (mode)
 	{
 	case 0:
 		return proj;
@@ -40,7 +40,7 @@ glm::mat4 Camera::getProjMatrix() const
 //		return vn::vr::projMatrixR;
 	default:
 		break;
-	}
+	}*/
 	return proj;
 }
 

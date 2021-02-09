@@ -14,10 +14,12 @@ Chunk::Chunk(World* world, vn::vec3i pos)
 
 void Chunk::makeMesh()
 {
-	ChunkMeshGenerator(*this, m_Mesh).makeMesh();
-	hasMesh = true;
-	hasBufferedMesh = false;
-	
+	//if (!hasMesh)
+	//{
+		ChunkMeshGenerator(*this, m_Mesh).makeMesh();
+		hasMesh = true;
+		hasBufferedMesh = false;
+	//}
 }
 
 bool Chunk::tryBuffer()
@@ -62,7 +64,7 @@ Chunk::~Chunk()
 
 bool Chunk::outOfBounds(int value) const
 {
-	return (value > 15 || value < 0);
+	return ((value > 15) || (value < 0));
 }
 
 vn::vec3i Chunk::toWorldPos(int x, int y, int z) const
