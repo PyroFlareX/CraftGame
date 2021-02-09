@@ -33,8 +33,8 @@ void ChunkManager::loadChunk(vn::vec3i pos)
 			for (int z = 0; z < 16; ++z)
 			{
 				// height : the y height of the surface layer at a given world (x,z) coordinate given by a simplex noise algorithm
-				unsigned int height = noiseHeight(x + pos.x * 16, z + pos.z * 16);
-				for (int y = 0; y < 16; ++y)
+				unsigned int height = noiseHeight(x + (pos.x * 16), z + (pos.z * 16));
+				for (int y = 0; y < 16; y++)
 				{
 
 					vn::vec3i blockcoords(x, y, z);
@@ -66,6 +66,10 @@ void ChunkManager::unloadChunk(vn::vec3i pos)
 
 Chunk& ChunkManager::getChunk(vn::vec3i position)
 {
+	if (!chunkExists(position))
+	{
+		loadChunk(position);
+	}
 	return m_chunks[position];
 }
 
@@ -101,6 +105,6 @@ unsigned int ChunkManager::noiseHeight(int x, int z)
 	height = (height + 1.1f) / 2.0f;
 
 	height *= 20;
-
-	return height;
+	
+	return ++height;
 }
