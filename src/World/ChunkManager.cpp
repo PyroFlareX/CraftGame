@@ -9,6 +9,9 @@ ChunkManager::ChunkManager(World* world)
 
 void ChunkManager::loadChunk(vn::vec3i pos)
 {
+	/// @TODO : IMPLEMENT CHUNK SAVING STRUCTURE
+
+
 	Block air;
 	air.id = 0;
 
@@ -61,7 +64,8 @@ void ChunkManager::loadChunk(vn::vec3i pos)
 
 void ChunkManager::unloadChunk(vn::vec3i pos)
 {
-
+	/// @TODO : IMPLEMENT CHUNK SAVING TO FILE
+	/// IF POSSIBLE THIS FUNCTION SHOULD BE async
 }
 
 Chunk& ChunkManager::getChunk(vn::vec3i position)
@@ -75,7 +79,7 @@ Chunk& ChunkManager::getChunk(vn::vec3i position)
 
 void ChunkManager::getRenderChunks(const Camera& cam, std::vector<Chunk*>& renderChunks)
 {
-	int radius = 3;
+	int radius = 6;
 	for (int x = (cam.pos.x / 16) - radius; x < (cam.pos.x / 16) + radius; ++x)
 	{
 		for (int z = (cam.pos.z / 16) - radius; z < (cam.pos.z / 16) + radius; ++z)
@@ -98,13 +102,12 @@ bool ChunkManager::chunkExists(vn::vec3i position)
 	return (m_chunks.find(position) != m_chunks.end());
 }
 
-unsigned int ChunkManager::noiseHeight(int x, int z)
+const unsigned short noiseHeight(int x, int z)
 {
 	float height = glm::simplex(glm::vec2(x / 64.0f, z / 64.0f));
 
-	height = (height + 1.1f) / 2.0f;
+	height = (height + 1.1f) * 10.0f + 1;
 
-	height *= 20;
 	
-	return ++height;
+	return static_cast<unsigned short>(height);
 }

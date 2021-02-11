@@ -2,7 +2,7 @@
 
 #include <array>
 
-#include "Block.h"
+#include "IBlock.h"
 
 #include "ChunkMesh.h"
 #include "../Renderers/Renderer.h"

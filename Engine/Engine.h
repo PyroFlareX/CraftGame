@@ -8,6 +8,7 @@
 #include "Resources/Timer.h"
 #include "Resources/Framebuffer.h"
 #include "Types/GameObject.h"
+#include "Registries/ResourceManager.h"
 
 
 

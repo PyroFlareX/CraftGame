@@ -5,6 +5,8 @@
 #include <unordered_map>
 #include <mutex>
 
+const unsigned short noiseHeight(int x, int z);
+
 class World;
 
 class ChunkManager
@@ -28,5 +30,5 @@ private:
 
 	bool chunkExists(vn::vec3i position);
 
-	unsigned int noiseHeight(int x, int z);
+	
 };

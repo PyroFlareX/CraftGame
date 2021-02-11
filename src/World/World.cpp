@@ -2,7 +2,8 @@
 
 World::World()  : m_chunkManager(this)
 {
-	
+	//IBlock grass;
+	//m_blockRegistry.addToRegistry(grass, "grass");
 }
 
 void World::setPlayerCam(Camera* cam)
@@ -14,7 +15,7 @@ void World::setPlayerCam(Camera* cam)
 void World::init()
 {
 	isRunning = true;
-	for (int i = 0; i < 1; i++) {
+	for (int i = 0; i < 2; i++) {
 		std::this_thread::sleep_for(std::chrono::milliseconds(50));
 		m_loadThreads.emplace_back([&]()
 			{
@@ -73,7 +74,7 @@ World::~World()
 
 void World::loadChunksThread(const Camera& cam)
 {
-	int radius = 3;
+	int radius = 10;
 	for (int x = (cam.pos.x / 16) - radius; x < (cam.pos.x / 16) + radius; ++x)
 	{
 		for (int z = (cam.pos.z / 16) - radius; z < (cam.pos.z / 16) + radius; ++z)
@@ -81,10 +82,13 @@ void World::loadChunksThread(const Camera& cam)
 			for (int y = 0; y < 16; y++)
 			{
 				vn::vec3i chunkcoords(x, y, z);
-				
-				//std::unique_lock<std::mutex> lock(m_mainlock);
 
-				m_chunkManager.loadChunk(chunkcoords);
+				if (m_mainlock.try_lock())
+				{
+					m_chunkManager.loadChunk(chunkcoords);
+					m_chunkManager.getChunk(chunkcoords).makeMesh();
+					m_mainlock.unlock();
+				}
 			}
 		}
 	}

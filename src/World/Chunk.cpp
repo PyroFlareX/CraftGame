@@ -14,16 +14,28 @@ Chunk::Chunk(World* world, vn::vec3i pos)
 
 void Chunk::makeMesh()
 {
-	//if (!hasMesh)
-	//{
+	if (!hasMesh)
+	{
 		ChunkMeshGenerator(*this, m_Mesh).makeMesh();
 		hasMesh = true;
 		hasBufferedMesh = false;
-	//}
+	}
 }
 
 bool Chunk::tryBuffer()
 {
+	
+	if (!hasBufferedMesh && hasMesh)
+	{
+		m_Mesh.bufferMesh();
+		hasBufferedMesh = true;
+		return true;
+	}
+	else
+	{
+		///
+		return false;
+	}
 	return false;
 }
 
@@ -49,12 +61,11 @@ vn::vec3i Chunk::getPosition() const
 
 void Chunk::renderChunk(Renderer& render)
 {
-	if (!hasMesh)
+	tryBuffer();
+	if (hasBufferedMesh)
 	{
-		makeMesh();
-		m_Mesh.bufferMesh();
+		render.drawChunk(m_Mesh);
 	}
-	render.drawChunk(m_Mesh);
 }
 
 Chunk::~Chunk()
